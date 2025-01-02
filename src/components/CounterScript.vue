@@ -6,14 +6,15 @@
     <h2>Square</h2>
     <p>{{ square }}</p>
     <div class="flex gap-4">
-      <button class="btn" type="button" @click="count++">Increment</button>
-      <button class="btn" type="button" @click="count--">Decrement</button>
+      <button class="btn" type="button" @click="increment">Increment</button>
+      <button class="btn" type="button" @click="decrement">Decrement</button>
     </div>
   </section>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref } from 'vue';
+import { useCounter } from '@/composables/useCounter';
+import { defineComponent } from 'vue';
 
 export default defineComponent({
   props: {
@@ -23,12 +24,13 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const count = ref(props.initialCount);
-    const square = computed(() => count.value * count.value);
+    const { count, square, decrement, increment } = useCounter(props.initialCount);
 
     return {
       count,
       square,
+      decrement,
+      increment,
     };
   },
 });

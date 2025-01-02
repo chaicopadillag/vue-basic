@@ -1,4 +1,5 @@
-import { computed, defineComponent, ref } from 'vue';
+import { useCounter } from '@/composables/useCounter';
+import { defineComponent } from 'vue';
 
 export default defineComponent({
   props: {
@@ -8,12 +9,13 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const count = ref(props.initialCount);
-    const square = computed(() => count.value * count.value);
+    const { count, square, decrement, increment } = useCounter(props.initialCount);
 
     return {
       count,
       square,
+      decrement,
+      increment,
     };
   },
 });
