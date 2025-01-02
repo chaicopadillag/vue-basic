@@ -6,7 +6,7 @@
 
     <ChatMessages :messages="messages" />
 
-    <MessageBox />
+    <MessageBox @on-message="onMessage" />
   </div>
 </template>
 
@@ -15,64 +15,15 @@ import ChatMessages from '@/components/chat/ChatMessages.vue';
 import type { ChatMessage } from '@/components/chat/interfaces/ChatType';
 import MessageBox from '@/components/chat/message-box/MessageBox.vue';
 import { v4 as uuid } from 'uuid';
+import { ref } from 'vue';
 
-const messages: ChatMessage[] = [
-  {
+const messages = ref<ChatMessage[]>([]);
+
+const onMessage = (message: string) => {
+  messages.value.push({
     id: uuid(),
-    message: 'Hola, ¿cómo estás?',
+    message: message,
     isReceived: false,
-  },
-  {
-    id: uuid(),
-    message: 'Hola, bien gracias, ¿y tú?',
-    isReceived: true,
-  },
-  {
-    id: uuid(),
-    message: 'Bien también, gracias',
-    isReceived: false,
-  },
-  {
-    id: uuid(),
-    message: '¿Qué has hecho hoy?',
-    isReceived: false,
-  },
-  {
-    id: uuid(),
-    message: 'He estado trabajando en el jardín',
-    isReceived: true,
-  },
-  {
-    id: uuid(),
-    message: '¡Qué bien! ¿Qué has plantado?',
-    isReceived: false,
-  },
-  {
-    id: uuid(),
-    message: 'He plantado flores y tomates',
-    isReceived: true,
-  },
-  {
-    id: uuid(),
-    message: '¡Qué bonito! ¿Puedo ver una foto?',
-    isReceived: false,
-  },
-  {
-    id: uuid(),
-    message: 'Claro, aquí tienes',
-    isReceived: true,
-    imageUrl: 'https://images.unsplash.com/photo-1628582037264-3b3b3b3b3b3b',
-  },
-  {
-    id: uuid(),
-    message: '¡Qué bonito! ¿Puedo ver una foto?',
-    isReceived: false,
-  },
-  {
-    id: uuid(),
-    message: 'Claro, aquí tienes',
-    isReceived: true,
-    imageUrl: 'https://images.unsplash.com/photo-1628582037264-3b3b3b3b3b3b',
-  },
-];
+  });
+};
 </script>
