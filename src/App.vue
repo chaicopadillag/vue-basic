@@ -3,20 +3,13 @@
     <h1>Vue 3 + TypeScript + Vite</h1>
     <p>Start coding your Vue 3 + TypeScript app here!</p>
   </div>
-  <section>
-    <h2>Counter</h2>
-    <p>{{ count }}</p>
-    <hr />
-    <h2>Square</h2>
-    <p>{{ square }}</p>
-    <button type="button" @click="count++">Increment</button>
-    <button type="button" @click="count--">Decrement</button>
-  </section>
+  <MyCounter :initial-count="15" />
+  <CounterScript :initial-count="10" />
+  <CounterComponent :initial-count="30" />
 </template>
 
 <script lang="ts" setup>
-import { ref, computed } from 'vue';
-
-const count = ref(2);
-const square = computed(() => count.value * count.value);
+import CounterComponent from './components/counter/CounterComponent.vue';
+import CounterScript from './components/CounterScript.vue';
+import MyCounter from './components/MyCounter.vue';
 </script>
