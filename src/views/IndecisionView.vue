@@ -12,18 +12,7 @@
 
 <script setup lang="ts">
 import ChatMessages from '@/components/chat/ChatMessages.vue';
-import type { ChatMessage } from '@/components/chat/interfaces/ChatType';
 import MessageBox from '@/components/chat/message-box/MessageBox.vue';
-import { v4 as uuid } from 'uuid';
-import { ref } from 'vue';
-
-const messages = ref<ChatMessage[]>([]);
-
-const onMessage = (message: string) => {
-  messages.value.push({
-    id: uuid(),
-    message: message,
-    isReceived: false,
-  });
-};
+import { useChat } from '@/composables/useChat';
+const { messages, onMessage } = useChat();
 </script>
