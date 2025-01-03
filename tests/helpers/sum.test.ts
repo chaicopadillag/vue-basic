@@ -16,7 +16,7 @@ describe('sum', () => {
 
 describe('sumFromArray', () => {
   test('should return 0 when the array is empty', () => {
-    const numeros = [];
+    const numeros: number[] = [];
 
     const resultado = 0;
 

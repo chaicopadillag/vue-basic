@@ -1,0 +1,12 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<MyCounter /> > should render 1`] = `
+"<section>
+  <h2>Counter Setup</h2>
+  <p>10</p>
+  <hr>
+  <h2>Square</h2>
+  <p>100</p>
+  <div class="flex gap-4"><button class="btn" type="button">Increment</button><button class="btn" type="button">Decrement</button></div>
+</section>"
+`;
